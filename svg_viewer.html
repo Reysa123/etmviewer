@@ -1,0 +1,118 @@
+<!-- saved from url=(0017)http://localhost/ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ETM Viewer</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+  <style media=screen>
+  <!--
+    /*印刷時のみ表示*/
+    .prtOnly {display:none;}
+  // -->
+  </style>
+  <style media=print>
+  <!--
+    /*ブラウザのみ表示*/
+    .dspOnly {display:none;}
+  // -->
+  </style>
+  <link rel="stylesheet" href="stylesheets/main.css" type="text/css">
+  <link rel="stylesheet" href="stylesheets/drag.css" type="text/css">
+  <script type="text/javascript" src="./svg/svg_contents.js"></script>
+  <script type="text/javascript" src="./svg/svg_searchableText.js"></script>
+  <script type="text/javascript" src="./svg/svg_aliasList.js"></script>
+  <script type="text/javascript" src="message.js"></script>
+  <script type="text/javascript" src="viewer.js"></script>
+  <script type="text/javascript" src="search.js"></script>
+  <script type="text/javascript" src="svg_drag.js"></script>
+  <script type="text/javascript" src="svg_wheel.js"></script>
+  <script type="text/javascript" src="print.js"></script>
+  <script type="text/javascript" src="underscore-min.js"></script>
+  <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+</head>
+
+<body onload="getParameter(); add_button_title();">
+  <div id="frame_div">
+    <!--画面左側DIV-->
+    <div id="main_div">
+      <!--ボタンDIV-->
+      <div id="button_div">
+        <div>
+          <button id="first_button" type="button" onclick="pan('reset');" ><IMG src="./images/home.gif" /></button>
+          <button id="page_zoom_in_button" type="button" onclick="zoomPage('zoomIn');" ><IMG src="./images/page_zoomin.gif"/></button>
+          <button id="page_zoom_out_button" type="button" onclick="zoomPage('zoomOut');" ><IMG src="./images/page_zoomout.gif"/></button>
+          <button id="page_zoom_actual_button" type="button" onclick="zoomPage('zoomReset');" ><IMG src="./images/page_zoom1.gif"/></button>
+          <button id="zoom_in_button" type="button" onclick="zoom('zoomIn');" ><IMG src="./images/zoomin.gif"/></button>
+          <button id="zoom_out_button" type="button" onclick="zoom('zoomOut');" ><IMG src="./images/zoomout.gif"/></button>
+          <button id="zoom_actual_button" type="button" onclick="zoom('zoomReset');" ><IMG src="./images/zoom1.gif"/></button>
+          <button id="back_button" type="button" onclick="back();"  disabled><IMG src="./images/back_disabled.gif"/></button>
+          <button id="forward_button" type="button" onclick="forward();"  disabled><IMG src="./images/forward_disabled.gif"/></button>
+          <button id="print_range_button" type="button" onclick="print_as_shown();" ><IMG src="./images/print_whole.gif"/></button>
+          <button id="print_button" type="button" onclick="print_multi();" ><IMG src="./images/print.gif"/></button>
+          <select id="lang_combobox" onChange="lang_combobox_change();">
+            <script>
+              disp_lang_combobox();
+            </script>
+          </select>
+        </div>
+        <div>
+          <select id="svg_combobox" onChange="svg_combobox_change(0, 0, PIXEL_PAGE_WIDTH_SHOW, PIXEL_PAGE_HEIGHT_SHOW, -1, true, true);">
+            <script>
+              disp_svg_combobox();
+            </script>
+          </select>
+          <button id="window_open_button" type="button" onclick="openETM('open'); return false;"><IMG src="./images/new_window.png"/></button>
+        </div>
+      </div>
+      <!--SVG画面DIV A4[72dpi](297m,210m)A4(842px,595px)-->
+      <div id="svg_div" draggable="true">
+      </div>
+    </div>
+    <!--画面右側DIV-->
+    <div id="search_div">
+      <!--検索入力DIV-->
+      <div id="searchbox">
+        <div id="search_input_div">
+          <form action="./" onsubmit="search();return false;" method="get">
+            <input id="search_text" type="text" />
+            <button id="search_button" type="submit" name="Search" value="Search"><img src="./images/search.gif"></button>
+          </form>
+        </div>
+        <div id="search_check_div">
+          <input id="search_check" type="checkbox" value="perfect_matching" checked>
+          <label id="search_check_label">
+            <script>
+              disp_search_checkbox();
+            </script>
+          </label>
+        </div>
+        <div id="category_check_div">
+          <input id="category_check_location" type="checkbox" value="Location" checked>
+          <label id="category_check_location_label">
+            <script>
+              disp_category_checkbox_location();
+            </script>
+          </label>
+          <input id="category_check_connector" type="checkbox" value="Connector" checked>
+          <label id="category_check_connector_label">
+            <script>
+              disp_category_checkbox_connector();
+            </script>
+          </label>
+          <input id="category_check_wiring" type="checkbox" value="Wiring" checked>
+          <label id="category_check_wiring_label">
+            <script>
+              disp_category_checkbox_wiring();
+            </script>
+          </label>
+        </div>
+      </div>
+      <!--検索結果DIV-->
+      <div id="searchbox_result">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
