@@ -1,0 +1,124 @@
+body {
+    width:1110px;
+    height:621px;
+/*  margin:0;
+    padding:0;*/	
+}
+
+button {
+    width:50px;
+    height:30px;
+    vertical-align:middle;
+}
+
+#frame_div {
+    align:left;
+    border:3px #333333 inset;
+    float:left;
+}
+
+#main_div {
+    align:left;
+    float:left;
+    border:groove;
+    width:785px;
+    height:621px;
+}
+
+#button_div {
+    border:3px outset;
+    height:78px;
+    overflow:auto;
+    background:#F08080;
+/*    text-align:center; */
+}
+
+#button_div button {
+    margin-top:8px;
+}
+
+#first_button {
+    margin-left:5px;
+}
+
+#window_open_button {
+    margin-right:5px;
+    float:right;
+}
+
+#lang_combobox {
+    margin-top:8px;
+    margin-right:5px;
+    float:right;
+}
+
+#svg_combobox {
+    margin-top:7px;
+    margin-left:5px;
+}
+#svg_div {
+    width:785.4px;
+    height:536.8px;
+    float:left;
+    overflow:hidden;
+}
+
+#search_div {
+    align:center;
+    border:3px groove;
+    float:left;
+    width:290px;
+    height:621px;
+    background:#e0e0e0;
+}
+
+#searchbox {
+    height:78px;
+    border:outset;
+    background:#333333;
+    overflow:auto;
+/*    text-align:center;*/
+}
+
+#searchbox_result {
+    height:530px;
+    overflow:auto;
+    font-size:10pt;
+    font-weight:bold;
+    background:#e0e0e0;
+}
+
+#searchbox_result a {
+    color:#333333;
+}
+
+#searchbox_result a:hover {
+    color:#FFA800;
+}
+
+#search_input_div {
+    margin-top:8px;
+	text-align:center;
+}
+
+#search_check_div {
+    text-align:left;
+    font-size:small;
+    color:#ffffff;
+    margin-left:30px;
+}
+
+#category_check_div {
+    text-align:left;
+    font-size:small;
+    color:#ffffff;
+    margin-left:30px;
+}
+
+#search_text {
+    width:200px;	
+}
+
+#search_check {
+	vertical-align:middle;
+}
